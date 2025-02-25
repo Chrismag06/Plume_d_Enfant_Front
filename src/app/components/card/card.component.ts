@@ -8,10 +8,11 @@ import { CatAgeComponent } from '../cat-age/cat-age.component';
 import { AuthService } from '../../service/auth.service';
 import { UtilisateurService } from '../../service/utilisateur.service';
 import { Subscription } from 'rxjs';
+import { TtsPlayerComponent } from "../tts-player/tts-player.component";
 
 @Component({
   selector: 'app-card',
-  imports: [CatHistoireComponent, CatAgeComponent],
+  imports: [CatHistoireComponent, CatAgeComponent, TtsPlayerComponent],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css',
   standalone: true,
