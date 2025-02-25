@@ -1,14 +1,10 @@
 <div>
     <h2>Text-to-Speech</h2>
 
-    <audio #audioPlayer  controls>
-      <source [src]="audioUrl"  type="audio/wav" />
+    <audio #audioPlayer [src]="audioUrl" controls>
+      <source type="audio/wav" />
       Votre navigateur ne supporte pas l'élément audio.
     </audio> 
-
-    <!-- <audio *ngIf="audioUrl" [src]="audioUrl" autoplay></audio> -->
-    
-    <!-- <button (click)="generateSpeech()">Jouer</button> -->
 
   </div>
   

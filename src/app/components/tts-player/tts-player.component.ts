@@ -8,12 +8,12 @@ import { TtsService } from '../../service/tts.service';
   styleUrl: './tts-player.component.css'
 })
 export class TtsPlayerComponent {
-  textToSpeak = 'Bonjour, comment ça va ?';
+  // textToSpeak = 'Bonjour, comment ça va ?';
   audioUrl: string | null = null;
 
-  @ViewChild('audioPlayer', { static: false }) audioPlayer!: ElementRef<HTMLAudioElement>;
+  // @ViewChild('audioPlayer', { static: false }) audioPlayer!: ElementRef<HTMLAudioElement>;
 
-  @Input() audioSrc: string = ''; // URL du fichier audio
+  @Input() textToSpeak: string = ''; // URL du fichier audio
 
   constructor(private ttsService: TtsService) {}
 

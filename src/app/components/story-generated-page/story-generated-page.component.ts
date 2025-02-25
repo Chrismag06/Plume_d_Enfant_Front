@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Histoire } from '../../model/histoire';
 import { CategorieHistoire } from '../../model/categorie-histoire';
 import { CategorieAge } from '../../model/categorie-age';
@@ -53,6 +53,10 @@ export class StoryGeneratedPageComponent implements OnInit {
     this.isUserLogin = this.authService.isAuthenticated();
   }
 
+  @ViewChild('storyText') storyParagraph!: ElementRef;  
+
+  textToRead: string = '';  
+
   ngOnInit(): void {
     this.idHistoire = parseInt(this.route.snapshot.paramMap.get('id') ?? '0');
 
@@ -64,6 +68,11 @@ export class StoryGeneratedPageComponent implements OnInit {
         reject("L'histoire n'est pas récupérée");
       }
     });
+  }
+
+  ngAfterViewInit() {
+    this.textToRead = this.storyParagraph.nativeElement.innerText.trim(); // Récupère le texte du <p>
+    // this.cdRef.detectChanges();
   }
 
   getHistoire(): void {
