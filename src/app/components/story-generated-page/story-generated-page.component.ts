@@ -9,10 +9,11 @@ import { CatAgeComponent } from '../cat-age/cat-age.component';
 import { CatHistoireComponent } from '../cat-histoire/cat-histoire.component';
 import { AuthService } from '../../service/auth.service';
 import { UtilisateurService } from '../../service/utilisateur.service';
+import { TtsPlayerComponent } from "../tts-player/tts-player.component";
 
 @Component({
   selector: 'app-story-generated-page',
-  imports: [CatAgeComponent, CatHistoireComponent],
+  imports: [CatAgeComponent, CatHistoireComponent, TtsPlayerComponent],
   templateUrl: './story-generated-page.component.html',
   styleUrl: './story-generated-page.component.css',
   standalone: true,

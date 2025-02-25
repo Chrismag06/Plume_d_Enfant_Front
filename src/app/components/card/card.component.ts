@@ -12,7 +12,7 @@ import { TtsPlayerComponent } from "../tts-player/tts-player.component";
 
 @Component({
   selector: 'app-card',
-  imports: [CatHistoireComponent, CatAgeComponent, TtsPlayerComponent],
+  imports: [CatHistoireComponent, CatAgeComponent],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css',
   standalone: true,

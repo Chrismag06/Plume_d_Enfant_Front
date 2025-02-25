@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { TtsService } from '../../service/tts.service';
 
 @Component({
@@ -11,7 +11,21 @@ export class TtsPlayerComponent {
   textToSpeak = 'Bonjour, comment ça va ?';
   audioUrl: string | null = null;
 
+  @ViewChild('audioPlayer', { static: false }) audioPlayer!: ElementRef<HTMLAudioElement>;
+
+  @Input() audioSrc: string = ''; // URL du fichier audio
+
   constructor(private ttsService: TtsService) {}
+
+  ngOnChanges() {
+    if (this.textToSpeak) {
+      this.ttsService.getSpeech(this.textToSpeak).subscribe(blob => {
+        this.audioUrl = URL.createObjectURL(blob); // Convertir le Blob en URL
+      }, error => {
+        console.error('Erreur lors de la récupération du son:', error);
+      });
+    }
+  }
 
   generateSpeech() {
     this.ttsService.getSpeech(this.textToSpeak).subscribe(blob => {
@@ -27,4 +41,7 @@ export class TtsPlayerComponent {
       audio.play();
     }
   }
+
+
+
 }
