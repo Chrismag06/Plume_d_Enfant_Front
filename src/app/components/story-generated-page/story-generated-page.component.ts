@@ -53,7 +53,9 @@ export class StoryGeneratedPageComponent implements OnInit {
     this.isUserLogin = this.authService.isAuthenticated();
   }
 
-  @ViewChild('storyText') storyParagraph!: ElementRef;  
+  // @ViewChild('storyText') storyParagraph!: ElementRef;  
+
+  @ViewChild('storyParagraph') storyParagraph!: ElementRef;
 
   textToRead: string = '';  
 
@@ -71,9 +73,28 @@ export class StoryGeneratedPageComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    console.log('Avant setTimeout ');
+    setTimeout(() => {
+      if (this.storyParagraph) {
+        console.log(this.storyParagraph.nativeElement.innerText);
+      }
+    }, 0);
+    console.log('Avant récupération de texte ');
     this.textToRead = this.storyParagraph.nativeElement.innerText.trim(); // Récupère le texte du <p>
+    console.log('Texte récupéré :', this.textToRead);
     // this.cdRef.detectChanges();
   }
+
+  ngAfterViewChecked() {
+    console.log('Avant AfterViewChecked ');
+    if (this.storyParagraph) {
+      console.log('Avant récupération de texte : ngAfterViewChecked');
+      console.log(this.storyParagraph.nativeElement.innerText);
+      this.textToRead = this.storyParagraph.nativeElement.innerText.trim();
+    }
+    console.log('Après AfterViewChecked ');
+  }
+  
 
   getHistoire(): void {
     if (this.idHistoire) {

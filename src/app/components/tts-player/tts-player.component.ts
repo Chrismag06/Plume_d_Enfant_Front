@@ -20,7 +20,8 @@ export class TtsPlayerComponent {
   ngOnChanges() {
     if (this.textToSpeak) {
       this.ttsService.getSpeech(this.textToSpeak).subscribe(blob => {
-        this.audioUrl = URL.createObjectURL(blob); // Convertir le Blob en URL
+        this.audioUrl = URL.createObjectURL(blob); 
+        console.log('Audio Blob URL:', this.audioUrl);
       }, error => {
         console.error('Erreur lors de la récupération du son:', error);
       });
